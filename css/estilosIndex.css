@@ -1,0 +1,112 @@
+﻿/* estilosIndex.css */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: url('../img/fondo-humo.jpg') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header {
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  width: 65px;
+  height: 65px;
+}
+
+.logo h1 {
+  font-size: 1.8rem;
+  color: #ffffff;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #fff;
+  margin-left: 25px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.menu a:hover {
+  color: #00e0d1;
+}
+
+.principal {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px;
+}
+
+.presentacion {
+  background: rgba(255, 255, 255, 0.0);
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.logo-grande {
+  width: 220px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.titulo-empresa {
+  font-family: 'Bauhaus 93', sans-serif;
+  font-size: 4rem;
+  color: #000; 
+  margin-bottom: 10px;
+}
+
+.subtitulo {
+  font-size: 1.3rem;
+  color: #000;
+  font-weight: 500;
+  margin-bottom: 25px;
+}
+
+/* ✅ Botón "Ingresar" */
+.boton-ingresar {
+  display: inline-block;
+  padding: 12px 35px;
+  background-color: #00e0d1;
+  color: #fff;
+  font-size: 1.2rem;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.boton-ingresar:hover {
+  background-color: #00b5a8;
+}
+
+.footer {
+  background: rgba(0, 0, 0, 0.6);
+  text-align: center;
+  padding: 15px;
+  color: #fff;
+  font-size: 0.9rem;
+}

@@ -1,0 +1,125 @@
+/* estilosRegistro.css */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: url('../img/fondo-humo.jpg') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+/* Cuadro oscuro centrado */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.login-box {
+  position: relative;
+  background: rgba(0, 0, 0, 0.85); /* Fondo oscuro igual que las imágenes */
+  padding: 60px 40px;
+  border-radius: 15px;
+  width: 380px;
+  text-align: center;
+
+  /* Borde verde del mismo color del botón */
+  border: 2px solid #00b5a8;
+
+  /* Suaviza el borde, sin brillo excesivo */
+  box-shadow: 0 0 15px rgba(0, 181, 168, 0.2);
+}
+
+/* Imágenes en las esquinas */
+.logos-esquinas {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo-izquierda,
+.logo-derecha {
+  width: 90px;   /* Más grandes */
+  height: 90px;
+  object-fit: contain;
+  background: transparent; /* Mantiene el fondo igual que el cuadro */
+  border: none;
+  margin: 0;
+  padding: 0;
+  filter: drop-shadow(0 0 2px rgba(255,255,255,0.15)); /* Sombra muy suave */
+}
+
+/* Título */
+h1 {
+  color: #00e0d1;
+  font-size: 1.9rem;
+  margin-top: 90px; /* espacio suficiente debajo de las imágenes */
+  margin-bottom: 25px;
+}
+
+/* Formulario */
+.input-group {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+label {
+  color: #fff;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 6px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+}
+
+.boton {
+  width: 100%;
+  background-color: #00e0d1;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 25px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.boton:hover {
+  background-color: #00b5a8;
+}
+
+/* Enlace de "Olvidó su contraseña" */
+.olvide {
+  margin-top: 15px;
+}
+
+.olvide a {
+  color: #00e0d1;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.olvide a:hover {
+  text-decoration: underline;
+}
