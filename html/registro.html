@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Iniciar Sesión - SmokeSoft</title>
-  <link rel="stylesheet" href="../css/estilosRegistro.css">
   <link rel="stylesheet" href="../css/estilosIndex.css">
+  <link rel="stylesheet" href="../css/estilosRegistro.css">
 </head>
 <body>
   <header class="header">
@@ -17,23 +17,22 @@
       <a href="../index.html">Inicio</a>
       <a href="contenido.html">Contenido</a>
       <a href="contactenos.html">Contáctenos</a>
-      <a href="registro.html">Registro</a>
+      <a href="registro.html" class="activo">Registro</a>
+      <a href="admin.html">Administración</a> 
     </nav>
   </header>
+
   <div class="login-container">
     <div class="login-box">
 
-      <!-- Imágenes en las esquinas -->
       <div class="logos-esquinas">
         <img src="../img/logotitle.jpeg" alt="Logo SmokeSoft" class="logo-izquierda">
         <img src="../img/rollingTimes.jpeg" alt="Imagen adicional" class="logo-derecha">
       </div>
 
-      <!-- Título -->
-      <h1>Iniciar Sesión</h1>
+      <h1 style="margin-top: 90px;">Iniciar Sesión</h1>
 
-      <!-- Formulario -->
-      <form action="#" method="post">
+      <form action="admin.html" method="get">
         <div class="input-group">
           <label for="usuario">Usuario</label>
           <input type="text" id="usuario" name="usuario" placeholder="Ingresa tu usuario" required>
@@ -48,6 +47,10 @@
 
         <div class="olvide">
           <a href="#">¿Olvidó su contraseña?</a>
+        </div>
+        
+        <div class="olvide" style="margin-top: 20px;">
+          <p style="color: white;">¿No tienes cuenta? <a href="crear-cuenta.html">Crear Cuenta</a></p>
         </div>
       </form>
     </div>
