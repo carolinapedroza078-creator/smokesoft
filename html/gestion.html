@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Gestión de Inventario | SmokeSoft</title>
+  <link rel="stylesheet" href="../css/estilosIndex.css">
+  <style>
+    .admin-container { display: flex; gap: 20px; padding: 40px; background: #f4f4f4; min-height: 80vh; }
+    .form-sidebar { background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 350px; }
+    .table-main { flex-grow: 1; background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+    
+    h2 { color: #0b2d22; margin-bottom: 20px; border-left: 5px solid #36b37e; padding-left: 10px; }
+    
+    .input-group { margin-bottom: 15px; }
+    label { display: block; margin-bottom: 5px; font-weight: bold; color: #0b2d22; }
+    input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; }
+    
+    .btn-save { background: #36b37e; color: white; border: none; width: 100%; padding: 12px; border-radius: 6px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+    .btn-save:hover { background: #2d9468; }
+
+    table { width: 100%; border-collapse: collapse; }
+    th { background: #0b2d22; color: white; padding: 12px; text-align: left; }
+    td { padding: 12px; border-bottom: 1px solid #eee; }
+    
+    .btn-edit { color: #36b37e; cursor: pointer; border: none; background: none; font-weight: bold; margin-right: 10px; }
+    .btn-delete { color: #e74c3c; cursor: pointer; border: none; background: none; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="../img/logo-smokesoft.png" alt="Logo SmokeSoft">
+      <h1>SmokeSoft</h1>
+    </div>
+    <nav>
+      <a href="../index.html">Inicio</a>
+      <a href="gestion.html" class="activo">Gestión</a>
+      <a href="ventas.html">Ventas</a>
+      <a href="contactenos.html">Contáctenos</a>
+    </nav>
+  </header>
+
+  <div class="admin-container">
+    <aside class="form-sidebar">
+      <h2 id="titulo-form">Nuevo Producto</h2>
+      <form id="form-producto">
+        <div class="input-group">
+          <label>Nombre del Producto</label>
+          <input type="text" placeholder="Ej: Vape Max">
+        </div>
+        <div class="input-group">
+          <label>Precio ($)</label>
+          <input type="number" placeholder="0.00">
+        </div>
+        <div class="input-group">
+          <label>Stock</label>
+          <input type="number" placeholder="Cantidad">
+        </div>
+        <button type="submit" class="btn-save">Guardar Producto</button>
+      </form>
+    </aside>
+
+    <main class="table-main">
+      <h2>Inventario Actual</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Líquido Tabaco Oro</td>
+            <td>$25.00</td>
+            <td>12</td>
+            <td>
+              <button class="btn-edit">Actualizar</button>
+              <button class="btn-delete">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+  </div>
+</body>
+</html>
