@@ -8,80 +8,115 @@
   <link rel="stylesheet" href="../css/estilosRegistro.css">
 </head>
 <body>
-  <header class="header">
+  <header class="encabezado">
     <div class="logo">
       <img src="../img/logo-smokesoft.png" alt="Logo SmokeSoft">
       <h1>SmokeSoft</h1>
     </div>
-    <nav class="menu">
+    <nav class="navegacion">
       <a href="../index.html">Inicio</a>
-      <a href="contenido.html">Contenido</a>
+      <a href="contenido.html">Productos</a>
       <a href="contactenos.html">Contáctenos</a>
-      <a href="registro.html">Registro</a>
-      <a href="admin.html">Administración</a> 
+      <a href="admin.html">Administración</a>
     </nav>
   </header>
 
-  <div class="login-container" style="align-items: flex-start; padding-top: 50px; padding-bottom: 50px;">
-    <div class="login-box" style="width: 100%; max-width: 700px; padding: 30px;">
-      
-      <h1 style="margin-top: 0; margin-bottom: 30px;">1 Crea tu cuenta SmokeSoft</h1>
+  <main class="contenedor-crear-cuenta">
+    <div class="caja-crear-cuenta">
+      <h2>Crear Cuenta</h2>
+      <p>Completa el formulario para registrarte</p>
 
-      <form class="registro-form-grid" action="admin.html">
+      <form id="formularioCrearCuenta" class="formulario-dos-columnas">
         
-        <div>
-          <div class="input-group">
-            <label for="reg-correo">Correo electrónico</label>
-            <input type="email" id="reg-correo" placeholder="ejemplo@correo.com" required>
+        <!-- Columna izquierda -->
+        <div class="columna">
+          <div class="grupo-campo">
+            <label for="correo">Correo electrónico:</label>
+            <input type="email" id="correo" placeholder="ejemplo@correo.com" required>
           </div>
-          <div class="input-group">
-            <label for="reg-nombre">Nombre</label>
-            <input type="text" id="reg-nombre" placeholder="Tu nombre" required>
+          
+          <div class="grupo-campo">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" placeholder="Tu nombre" required>
           </div>
-          <div class="input-group">
-            <label for="reg-apellidos">Apellidos</label>
-            <input type="text" id="reg-apellidos" placeholder="Tus apellidos" required>
+          
+          <div class="grupo-campo">
+            <label for="apellidos">Apellidos:</label>
+            <input type="text" id="apellidos" placeholder="Tus apellidos" required>
           </div>
-          <div class="input-group">
-            <label for="reg-tipo-doc">Tipo de documento</label>
-            <select id="reg-tipo-doc" style="width: 100%; padding: 10px; border-radius: 8px; border: none; background: white;">
+          
+          <div class="grupo-campo">
+            <label for="tipoDocumento">Tipo de documento:</label>
+            <select id="tipoDocumento" required>
               <option value="CC">Cédula de Ciudadanía</option>
               <option value="TI">Tarjeta de Identidad</option>
+              <option value="CE">Cédula de Extranjería</option>
             </select>
           </div>
-          <div class="input-group">
-            <label for="reg-num-doc">Número de documento</label>
-            <input type="text" id="reg-num-doc" placeholder="Número de documento" required>
+          
+          <div class="grupo-campo">
+            <label for="numeroDocumento">Número de documento:</label>
+            <input type="text" id="numeroDocumento" placeholder="Número de documento" required>
           </div>
-          <div class="input-group">
-            <label for="reg-celular">Celular</label>
-            <input type="tel" id="reg-celular" placeholder="+57 XXX XXX XX XX" required>
+          
+          <div class="grupo-campo">
+            <label for="celular">Celular:</label>
+            <input type="tel" id="celular" placeholder="+57 300 000 0000" required>
           </div>
         </div>
 
-        <div>
-          <div class="input-group">
-            <label for="reg-usuario">Tu nombre de usuario</label>
-            <input type="text" id="reg-usuario" placeholder="Define tu usuario" required>
+        <!-- Columna derecha -->
+        <div class="columna">
+          <div class="grupo-campo">
+            <label for="nombreUsuario">Nombre de usuario:</label>
+            <input type="text" id="nombreUsuario" placeholder="Define tu usuario" required>
           </div>
-          <div class="input-group">
-            <label for="reg-contrasena">Contraseña</label>
-            <input type="password" id="reg-contrasena" placeholder="Ingresa tu contraseña" required>
+          
+          <div class="grupo-campo">
+            <label for="contrasena">Contraseña:</label>
+            <input type="password" id="contrasena" placeholder="Ingresa tu contraseña" required>
           </div>
-          <div class="input-group">
-            <label for="reg-confirmar">Confirmar Contraseña</label>
-            <input type="password" id="reg-confirmar" placeholder="Repite tu contraseña" required>
+          
+          <div class="grupo-campo">
+            <label for="confirmarContrasena">Confirmar contraseña:</label>
+            <input type="password" id="confirmarContrasena" placeholder="Repite tu contraseña" required>
           </div>
         </div>
-        
-        <button type="submit" class="boton">Crear Cuenta</button>
 
-        <div class="olvide">
-          <p style="color: white;">¿Ya tienes cuenta? <a href="registro.html">Inicia Sesión</a></p>
+        <!-- Boton que ocupa las dos columnas -->
+        <div class="fila-completa">
+          <button type="submit" class="boton-crear">Crear Cuenta</button>
+          
+          <div class="enlace-iniciar">
+            <p>¿Ya tienes cuenta? <a href="registro.html">Inicia Sesión</a></p>
+          </div>
         </div>
       </form>
-
     </div>
-  </div>
+  </main>
+
+  <footer class="pie-pagina">
+    <p>&copy; 2025 SmokeSoft - Todos los derechos reservados</p>
+  </footer>
+
+  <script>
+    // Cuando se envia el formulario
+    document.getElementById('formularioCrearCuenta').onsubmit = function(evento) {
+      evento.preventDefault();
+      
+      var contrasena = document.getElementById('contrasena').value;
+      var confirmar = document.getElementById('confirmarContrasena').value;
+      var nombre = document.getElementById('nombre').value;
+      
+      // Verificar que las contraseñas coincidan
+      if (contrasena !== confirmar) {
+        alert('Las contraseñas no coinciden');
+        return;
+      }
+      
+      alert('¡Cuenta creada exitosamente! Bienvenido ' + nombre);
+      window.location.href = 'registro.html';
+    };
+  </script>
 </body>
 </html>
