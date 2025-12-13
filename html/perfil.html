@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mi Perfil - SmokeSoft</title>
   <link rel="stylesheet" href="../css/estilosIndex.css">
-  <link rel="stylesheet" href="../css/estilosAdmin.css"> </head>
+  <link rel="stylesheet" href="../css/estilosAdmin.css">
+  <link rel="stylesheet" href="../css/estilosServicios.css">
+</head>
 <body>
   <header class="header">
     <div class="logo">
@@ -16,11 +18,42 @@
       <a href="../index.html">Inicio</a>
       <a href="contenido.html">Contenido</a>
       <a href="contactenos.html">Contáctenos</a>
-      <a href="perfil.html" class="activo">Mi Perfil</a>
+      <a href="perfil.html" class="activo">Mi Perfil</a> 
       <a href="admin.html" style="color: #ccc;">Administración</a> 
       <a href="registro.html">Cerrar Sesión</a>
     </nav>
   </header>
+
+  <div class="client-services-bar">
+    <div class="service-item">
+        <div class="service-icon">✔</div>
+        <div class="service-details">
+            <h4>Atención personalizada</h4>
+            <p>Servicio profesional</p>
+        </div>
+    </div>
+    <div class="service-item">
+        <div class="service-icon">🔒</div>
+        <div class="service-details">
+            <h4>Pagos seguros</h4>
+            <p>Bold / Nequi / Bancolombia / PSE</p>
+        </div>
+    </div>
+    <div class="service-item">
+        <div class="service-icon">📦</div>
+        <div class="service-details">
+            <h4>Productos</h4>
+            <p>100% Garantizados</p>
+        </div>
+    </div>
+    <div class="service-item">
+        <div class="service-icon">🚚</div>
+        <div class="service-details">
+            <h4>Programa tu entrega</h4>
+            <p>Envíos confiables</p>
+        </div>
+    </div>
+  </div>
 
   <div class="admin-container">
     <div class="welcome-banner">
@@ -82,7 +115,7 @@
                 <td>$ 40.000 COP</td>
                 <td style="color: green; font-weight: bold;">Entregado</td>
             </tr>
-            </tbody>
+          </tbody>
         </table>
       </div>
     </section>
@@ -90,10 +123,8 @@
   </div>
   
   <script>
-    // Pequeño script para personalizar el saludo
     document.addEventListener('DOMContentLoaded', () => {
-        // En una aplicación real, aquí obtendrías el nombre del usuario logueado.
-        const nombreCliente = "Carolina"; // Simulación
+        const nombreCliente = "Carolina";
         const banner = document.querySelector('.welcome-banner h2');
         if (banner) {
             banner.textContent = `👋 Hola, ${nombreCliente}`;
