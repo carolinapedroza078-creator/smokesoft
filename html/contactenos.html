@@ -1,43 +1,61 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contáctanos - SmokeSoft</title>
-  <link rel="stylesheet" href="../css/estilosIndex.css">
-  <link rel="stylesheet" href="../css/estilosContactenos.css">
-  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contáctenos - SmokeSoft</title>
+    <link rel="stylesheet" href="../css/estilosIndex.css">
+    <link rel="stylesheet" href="../css/estilosContactenos.css">
 </head>
 <body>
-   <header class="header">
-    <div class="logo">
-      <img src="../img/logo-smokesoft.png" alt="Logo SmokeSoft">
-      <h1>SmokeSoft</h1>
+    <header class="header">
+        <div class="logo">
+            <img src="../img/logo-smokesoft.png" alt="Logo SmokeSoft">
+            <h1>SmokeSoft</h1>
+        </div>
+        <nav class="menu">
+            <a href="../index.html">Inicio</a>
+            <a href="contenido.html">Contenido</a>
+            <a href="contactenos.html" class="activo">Contáctenos</a>
+            <a href="registro.html">Registro</a> 
+            <a href="admin.html">Administración</a>
+        </nav>
+    </header>
+
+    <div class="contact-container">
+        <h1>Contáctanos</h1>
+        <p>¿Tienes preguntas o necesitas ayuda? Envíanos un mensaje.</p>
+
+        <form class="contact-form">
+            <div class="input-group">
+                <label for="nombre">Nombre completo</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Escribe tu nombre" required>
+            </div>
+
+            <div class="input-group">
+                <label for="correo">Correo electrónico</label>
+                <input type="email" id="correo" name="correo" placeholder="ejemplo@correo.com" required>
+            </div>
+
+            <div class="input-group">
+                <label for="asunto">Asunto</label>
+                <input type="text" id="asunto" name="asunto" placeholder="Motivo del contacto" required>
+            </div>
+
+            <div class="input-group">
+                <label for="mensaje">Mensaje</label>
+                <textarea id="mensaje" name="mensaje" rows="6" placeholder="Escribe tu mensaje aquí..." required></textarea>
+            </div>
+
+            <button type="submit" class="boton">Enviar Mensaje</button>
+        </form>
+
+        <div class="contact-info">
+            <h2>Otras formas de contacto</h2>
+            <p><strong>Teléfono:</strong> +57 310 XXX XXXX</p>
+            <p><strong>Email:</strong> info@smokesoft.com</p>
+            <p><strong>Horario:</strong> Lunes a Viernes, 9:00 AM - 6:00 PM</p>
+        </div>
     </div>
-    <nav class="menu">
-      <a href="../index.html">Inicio</a>
-      <a href="contenido.html">Contenido</a>
-      <a href="contactenos.html">Contáctenos</a>
-      <a href="registro.html">Registro</a>
-    </nav>
-  </header>
-  <div class="contact-container">
-    <h1>Contáctanos</h1>
-    <form class="contact-form">
-      <label for="nombre">Nombre</label>
-      <input type="text" id="nombre" name="nombre" placeholder="Escribe tu nombre">
-
-      <label for="correo">Correo electrónico</label>
-      <input type="email" id="correo" name="correo" placeholder="ejemplo@correo.com">
-
-      <label for="asunto">Asunto</label>
-      <input type="text" id="asunto" name="asunto" placeholder="Motivo del mensaje">
-
-      <label for="mensaje">Mensaje</label>
-      <textarea id="mensaje" name="mensaje" rows="5" placeholder="Escribe tu mensaje..."></textarea>
-
-      <button type="submit">Enviar mensaje</button>
-    </form>
-  </div>
 </body>
 </html>
