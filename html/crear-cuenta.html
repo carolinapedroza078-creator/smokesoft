@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crear Cuenta - SmokeSoft</title>
+  <link rel="stylesheet" href="../css/estilosIndex.css">
+  <link rel="stylesheet" href="../css/estilosRegistro.css">
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+      <img src="../img/logo-smokesoft.png" alt="Logo SmokeSoft">
+      <h1>SmokeSoft</h1>
+    </div>
+    <nav class="menu">
+      <a href="../index.html">Inicio</a>
+      <a href="contenido.html">Contenido</a>
+      <a href="contactenos.html">Contáctenos</a>
+      <a href="registro.html">Registro</a>
+      <a href="admin.html">Administración</a> 
+    </nav>
+  </header>
+
+  <div class="login-container" style="align-items: flex-start; padding-top: 50px; padding-bottom: 50px;">
+    <div class="login-box" style="width: 100%; max-width: 700px; padding: 30px;">
+      
+      <h1 style="margin-top: 0; margin-bottom: 30px;">1 Crea tu cuenta SmokeSoft</h1>
+
+      <form class="registro-form-grid" action="admin.html">
+        
+        <div>
+          <div class="input-group">
+            <label for="reg-correo">Correo electrónico</label>
+            <input type="email" id="reg-correo" placeholder="ejemplo@correo.com" required>
+          </div>
+          <div class="input-group">
+            <label for="reg-nombre">Nombre</label>
+            <input type="text" id="reg-nombre" placeholder="Tu nombre" required>
+          </div>
+          <div class="input-group">
+            <label for="reg-apellidos">Apellidos</label>
+            <input type="text" id="reg-apellidos" placeholder="Tus apellidos" required>
+          </div>
+          <div class="input-group">
+            <label for="reg-tipo-doc">Tipo de documento</label>
+            <select id="reg-tipo-doc" style="width: 100%; padding: 10px; border-radius: 8px; border: none; background: white;">
+              <option value="CC">Cédula de Ciudadanía</option>
+              <option value="TI">Tarjeta de Identidad</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label for="reg-num-doc">Número de documento</label>
+            <input type="text" id="reg-num-doc" placeholder="Número de documento" required>
+          </div>
+          <div class="input-group">
+            <label for="reg-celular">Celular</label>
+            <input type="tel" id="reg-celular" placeholder="+57 XXX XXX XX XX" required>
+          </div>
+        </div>
+
+        <div>
+          <div class="input-group">
+            <label for="reg-usuario">Tu nombre de usuario</label>
+            <input type="text" id="reg-usuario" placeholder="Define tu usuario" required>
+          </div>
+          <div class="input-group">
+            <label for="reg-contrasena">Contraseña</label>
+            <input type="password" id="reg-contrasena" placeholder="Ingresa tu contraseña" required>
+          </div>
+          <div class="input-group">
+            <label for="reg-confirmar">Confirmar Contraseña</label>
+            <input type="password" id="reg-confirmar" placeholder="Repite tu contraseña" required>
+          </div>
+        </div>
+        
+        <button type="submit" class="boton">Crear Cuenta</button>
+
+        <div class="olvide">
+          <p style="color: white;">¿Ya tienes cuenta? <a href="registro.html">Inicia Sesión</a></p>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</body>
+</html>
