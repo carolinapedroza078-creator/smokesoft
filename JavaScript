@@ -1,0 +1,80 @@
+document.addEventListener('DOMContentLoaded', () => {
+    // Referencias a elementos del menú
+    const menuOculto = document.getElementById('menuOculto'); // El DIV que contiene los enlaces sensibles
+    const authLink = document.getElementById('authLink');   // El enlace "Iniciar Sesión"/"Cerrar Sesión"
+    
+    // Verifica el estado de la sesión en el navegador
+    const estaLogeado = localStorage.getItem('usuarioLogeado') === 'true'; 
+
+    /**
+     * Actualiza la interfaz del menú según el estado de la sesión.
+     * @param {boolean} logeado - True si el usuario ha iniciado sesión.
+     */
+    function actualizarMenu(logeado) {
+        if (logeado) {
+            // USUARIO LOGEADO: MOSTRAR ENLACES SENSIBLES
+            if (menuOculto) {
+                // Añade la clase que CSS usa para mostrar el bloque
+                menuOculto.classList.add('sesion-iniciada'); 
+            }
+            if (authLink) {
+                // Cambia el enlace a Cerrar Sesión
+                authLink.textContent = 'Cerrar Sesión';
+                authLink.href = '#'; 
+                authLink.onclick = cerrarSesion;
+            }
+        } else {
+            // USUARIO NO LOGEADO: OCULTAR ENLACES SENSIBLES
+            if (menuOculto) {
+                // Remueve la clase para ocultar el bloque
+                menuOculto.classList.remove('sesion-iniciada');
+            }
+            if (authLink) {
+                // Cambia el enlace a Iniciar Sesión
+                authLink.textContent = 'Iniciar Sesión';
+                // Apunta a la página de registro/login
+                authLink.href = 'registro.html'; 
+                authLink.onclick = null;
+            }
+        }
+    }
+    
+    /**
+     * Maneja el proceso de cierre de sesión.
+     */
+    function cerrarSesion(e) {
+        if (e) e.preventDefault();
+        // Elimina la bandera de sesión
+        localStorage.removeItem('usuarioLogeado'); 
+        alert("Sesión cerrada. Serás redirigido al inicio.");
+        actualizarMenu(false);
+        // Redirige al índice (asume que index.html está en la ruta raíz superior)
+        window.location.href = '../index.html'; 
+    }
+
+    // Ejecuta la función al cargar la página para establecer el estado inicial del menú
+    actualizarMenu(estaLogeado);
+
+    // *************************************************************
+    // LÓGICA DE PRUEBA: SIMULACIÓN DE LOGIN EN LA PÁGINA DE REGISTRO
+    // *************************************************************
+    
+    // Detecta si estamos en la página de registro/login
+    const url = window.location.href;
+    if (url.includes('registro.html') && !estaLogeado) {
+        // Busca el botón de ingreso (asegúrate de que tenga la ID 'ingresarBtn' en registro.html)
+        const botonLogin = document.getElementById('ingresarBtn'); 
+        if (botonLogin) {
+            botonLogin.addEventListener('click', (e) => {
+                e.preventDefault(); 
+                // Simulación de credenciales correctas:
+                
+                // Establece la bandera de sesión como verdadera
+                localStorage.setItem('usuarioLogeado', 'true');
+                alert('¡Inicio de sesión exitoso! Acceso al Panel de Administración desbloqueado.');
+                // Redirige a la página principal (index.html)
+                window.location.href = '../index.html'; 
+            });
+        }
+    }
+});
