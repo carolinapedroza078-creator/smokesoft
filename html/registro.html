@@ -8,52 +8,80 @@
   <link rel="stylesheet" href="../css/estilosRegistro.css">
 </head>
 <body>
-  <header class="header">
+  <header class="encabezado">
     <div class="logo">
       <img src="../img/logo-smokesoft.png" alt="Logo SmokeSoft">
       <h1>SmokeSoft</h1>
     </div>
-    <nav class="menu">
+    <nav class="navegacion">
       <a href="../index.html">Inicio</a>
-      <a href="contenido.html">Contenido</a>
+      <a href="contenido.html">Productos</a>
       <a href="contactenos.html">Contáctenos</a>
-      <a href="registro.html" class="activo">Registro</a>
-      <a href="admin.html">Administración</a> 
+      <a href="admin.html">Administración</a>
     </nav>
   </header>
 
-  <div class="login-container">
-    <div class="login-box">
-
-      <div class="logos-esquinas">
-        <img src="../img/logotitle.jpeg" alt="Logo SmokeSoft" class="logo-izquierda">
-        <img src="../img/rollingTimes.jpeg" alt="Imagen adicional" class="logo-derecha">
+  <main class="contenedor-registro">
+    <div class="caja-registro">
+      <div class="logos-superiores">
+        <img src="../img/logotitle.jpeg" alt="Logo SmokeSoft">
+        <img src="../img/rollingTimes.jpeg" alt="Rolling Times">
       </div>
 
-      <h1 style="margin-top: 90px;">Iniciar Sesión</h1>
+      <h2>Iniciar Sesión</h2>
+      <p>Ingresa tus datos para acceder</p>
 
-      <form action="admin.html" method="get">
-        <div class="input-group">
-          <label for="usuario">Usuario</label>
+      <!-- Aviso para pruebas -->
+      <div class="aviso-prueba">
+        <strong>Datos de prueba:</strong><br>
+        Usuario: cualquiera<br>
+        Contraseña: cualquiera
+      </div>
+
+      <form id="formularioRegistro">
+        <div class="grupo-campo">
+          <label for="usuario">Usuario:</label>
           <input type="text" id="usuario" name="usuario" placeholder="Ingresa tu usuario" required>
         </div>
 
-        <div class="input-group">
-          <label for="password">Contraseña</label>
-          <input type="password" id="password" name="password" placeholder="Ingresa tu contraseña" required>
+        <div class="grupo-campo">
+          <label for="contrasena">Contraseña:</label>
+          <input type="password" id="contrasena" name="contrasena" placeholder="Ingresa tu contraseña" required>
         </div>
 
-        <button type="submit" class="boton">Ingresar</button>
+        <button type="submit" class="boton-ingresar">Ingresar</button>
 
-        <div class="olvide">
-          <a href="#">¿Olvidó su contraseña?</a>
+        <div class="enlace-recuperar">
+          <a href="#">¿Olvidaste tu contraseña?</a>
         </div>
         
-        <div class="olvide" style="margin-top: 20px;">
-          <p style="color: white;">¿No tienes cuenta? <a href="crear-cuenta.html">Crear Cuenta</a></p>
+        <div class="enlace-crear">
+          <p>¿No tienes cuenta? <a href="crear-cuenta.html">Crear Cuenta</a></p>
         </div>
       </form>
     </div>
-  </div>
+  </main>
+
+  <footer class="pie-pagina">
+    <p>&copy; 2025 SmokeSoft - Todos los derechos reservados</p>
+  </footer>
+
+  <script>
+    // Cuando se envia el formulario
+    document.getElementById('formularioRegistro').onsubmit = function(evento) {
+      evento.preventDefault();
+      
+      var usuario = document.getElementById('usuario').value;
+      var contrasena = document.getElementById('contrasena').value;
+      
+      // Verificar credenciales
+      if (usuario !== '' && contrasena !== '') {
+        alert('Bienvenido ' + usuario + '!');
+        window.location.href = 'contenido.html';
+      } else {
+        alert('Por favor completa todos los campos');
+      }
+    };
+  </script>
 </body>
 </html>

@@ -3,289 +3,167 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contenido - SmokeSoft</title>
+  <title>Productos - SmokeSoft</title>
   <link rel="stylesheet" href="../css/estilosIndex.css">
-  <link rel="stylesheet" href="../css/estilosContenido.css"> 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="../css/estilosContenido.css">
 </head>
 <body>
-  <header class="header">
+  <header class="encabezado">
     <div class="logo">
       <img src="../img/logo-smokesoft.png" alt="Logo SmokeSoft">
       <h1>SmokeSoft</h1>
     </div>
-    <nav class="menu">
+    <nav class="navegacion">
       <a href="../index.html">Inicio</a>
-      <a href="contenido.html" class="activo">Contenido</a>
+      <a href="contenido.html" class="activo">Productos</a>
       <a href="contactenos.html">Contáctenos</a>
-      <a href="registro.html">Registro</a> 
       <a href="admin.html">Administración</a>
     </nav>
   </header>
 
-  <div class="search-floating-container">
-    <div class="search-bar">
-      <input type="text" placeholder="Buscar producto por nombre o categoría...">
-      <button class="search-btn"><i class="fas fa-search"></i> BUSCAR</button>
-    </div>
-  </div>
+  <main class="contenedor-principal">
+    <h2 class="titulo-seccion">Nuestros Productos</h2>
+    <p class="descripcion">Los mejores productos para fumadores</p>
 
-  <div class="contenido-container">
-    
-    <div class="tabs-navigation">
-        <button class="tab-button activo" onclick="openTab(event, 'destacados')">PRODUCTOS DESTACADOS</button>
-        <button class="tab-button" onclick="openTab(event, 'marcas')">MARCAS Y CATEGORÍAS</button>
-        <button class="tab-button" onclick="openTab(event, 'ofertas')">OFERTAS Y NOVEDADES</button>
+    <!-- Barra de busqueda -->
+    <div class="barra-busqueda">
+      <input type="text" id="campoBusqueda" placeholder="Buscar productos...">
+      <button onclick="buscarProductos()">Buscar</button>
     </div>
 
-    <div id="destacados" class="tab-content activo">
-        <h2 class="section-title">NUESTROS PRODUCTOS MÁS VENDIDOS</h2>
-        
-        <div class="product-stars">
-            <span class="star">⭐</span>
-            <span class="star">⭐</span>
-            <span class="star">⭐</span>
-            <span class="star">⭐</span>
-            <span class="star">⭐</span>
-        </div>
+    <!-- Lista de productos -->
+    <div class="lista-productos" id="listaProductos">
+      
+      <!-- Producto 1 - Encendedor -->
+      <div class="tarjeta-producto">
+        <div class="etiqueta-oferta">OFERTA</div>
+        <img src="https://images.unsplash.com/photo-1585314062340-f1a5a7c9328d?w=300&h=300&fit=crop" alt="Encendedor Clipper">
+        <h3>Encendedor Clipper</h3>
+        <p class="categoria">Encendedores</p>
+        <p class="precio">
+          <span class="precio-anterior">$9,000</span>
+          <span class="precio-actual">$7,800</span>
+        </p>
+        <p class="existencias">Existencias: 45 unidades</p>
+        <button class="boton-agregar" onclick="agregarAlCarrito('Encendedor Clipper')">Agregar al carrito</button>
+      </div>
 
-        <div class="product-grid">
-            <div class="product-card">
-                <img src="../img/productos/encendedor-clipper.jpeg" alt="Encendedor Clipper" class="product-image">
-                <p class="product-category">LIGHTER/ENCENDEDOR</p>
-                <h3 class="product-name">ENCENDEDORES/CLIPPERS</h3>
-                <p class="product-price"><span class="old-price">$9,000</span> **$7,800**</p>
-                <div class="product-quantity">
-                    <button>-</button>
-                    <input type="number" value="1" min="1">
-                    <button>+</button>
-                </div>
-                <button class="add-to-cart-btn">AÑADIR AL CARRITO</button>
-                <span class="product-offer">¡Oferta!</span>
-            </div>
+      <!-- Producto 2 - Pipa -->
+      <div class="tarjeta-producto">
+        <div class="etiqueta-nuevo">NUEVO</div>
+        <img src="https://images.unsplash.com/photo-1527661591475-527312dd65f5?w=300&h=300&fit=crop" alt="Pipa Bate Gold">
+        <h3>Pipa Bate Gold</h3>
+        <p class="categoria">Pipas</p>
+        <p class="precio">
+          <span class="precio-actual">$12,000</span>
+        </p>
+        <p class="existencias">Existencias: 23 unidades</p>
+        <button class="boton-agregar" onclick="agregarAlCarrito('Pipa Bate Gold')">Agregar al carrito</button>
+      </div>
 
-            <div class="product-card">
-                <img src="../img/productos/pipa-bate-gold.jpeg" alt="Pipa Bate Gold" class="product-image">
-                <p class="product-category">PIPES/PIPAS</p>
-                <h3 class="product-name">PIPA BATE GOLD</h3>
-                <p class="product-price">**$12,000**</p>
-                <div class="product-quantity">
-                    <button>-</button>
-                    <input type="number" value="1" min="1">
-                    <button>+</button>
-                </div>
-                <button class="add-to-cart-btn">AÑADIR AL CARRITO</button>
-            </div>
-            
-            <div class="product-card">
-                <img src="../img/productos/pipa-mini-gold.jpeg" alt="Pipa Mini Gold" class="product-image">
-                <p class="product-category">PIPES/PIPAS</p>
-                <h3 class="product-name">PIPA MINI GOLD</h3>
-                <p class="product-price">**$8,000**</p>
-                <div class="product-quantity">
-                    <button>-</button>
-                    <input type="number" value="1" min="1">
-                    <button>+</button>
-                </div>
-                <button class="add-to-cart-btn">AÑADIR AL CARRITO</button>
-            </div>
-            
-            <div class="product-card">
-                <img src="../img/productos/vaper-desechable.jpeg" alt="Vaporizador Desechable" class="product-image">
-                <p class="product-category">VAPORIZADORES</p>
-                <h3 class="product-name">Vaporizador Desechable (Sabor Frutas)</h3>
-                <p class="product-price">**$40,000**</p>
-                <div class="product-quantity">
-                    <button>-</button>
-                    <input type="number" value="1" min="1">
-                    <button>+</button>
-                </div>
-                <button class="add-to-cart-btn">AÑADIR AL CARRITO</button>
-                <span class="product-offer">¡Nuevo!</span>
-            </div>
+      <!-- Producto 3 - Pipa Mini -->
+      <div class="tarjeta-producto">
+        <img src="https://images.unsplash.com/photo-1560024802-d073a4d21178?w=300&h=300&fit=crop" alt="Pipa Mini Gold">
+        <h3>Pipa Mini Gold</h3>
+        <p class="categoria">Pipas</p>
+        <p class="precio">
+          <span class="precio-actual">$8,000</span>
+        </p>
+        <p class="existencias">Existencias: 67 unidades</p>
+        <button class="boton-agregar" onclick="agregarAlCarrito('Pipa Mini Gold')">Agregar al carrito</button>
+      </div>
 
-            <div class="product-card">
-                <img src="../img/productos/papel-raw.jpeg" alt="Papel RAW" class="product-image">
-                <p class="product-category">PAPELES Y TABACO</p>
-                <h3 class="product-name">Papel de Liar RAW Classic King Size</h3>
-                <p class="product-price">**$10,000**</p>
-                <div class="product-quantity">
-                    <button>-</button>
-                    <input type="number" value="1" min="1">
-                    <button>+</button>
-                </div>
-                <button class="add-to-cart-btn">AÑADIR AL CARRITO</button>
-            </div>
+      <!-- Producto 4 - Vaper -->
+      <div class="tarjeta-producto">
+        <img src="https://images.unsplash.com/photo-1567922045116-2a00fae2ed03?w=300&h=300&fit=crop" alt="Vaper Desechable">
+        <h3>Vaper Desechable Frutas</h3>
+        <p class="categoria">Vaporizadores</p>
+        <p class="precio">
+          <span class="precio-actual">$40,000</span>
+        </p>
+        <p class="existencias">Existencias: 89 unidades</p>
+        <button class="boton-agregar" onclick="agregarAlCarrito('Vaper Desechable')">Agregar al carrito</button>
+      </div>
 
-            <div class="product-card">
-                <img src="../img/productos/grinder-krush.jpeg" alt="Grinder Krush" class="product-image">
-                <p class="product-category">ACCESORIOS/MOLEDORES</p>
-                <h3 class="product-name">Moledor de Aluminio KRUSH KUBE 2.0</h3>
-                <p class="product-price"><span class="old-price">$150,000</span> **$120,000**</p>
-                <div class="product-quantity">
-                    <button>-</button>
-                    <input type="number" value="1" min="1">
-                    <button>+</button>
-                </div>
-                <button class="add-to-cart-btn">AÑADIR AL CARRITO</button>
-                <span class="product-offer">¡Oferta!</span>
-            </div>
+      <!-- Producto 5 - Papel -->
+      <div class="tarjeta-producto">
+        <img src="https://images.unsplash.com/photo-1589483232748-515c025575bc?w=300&h=300&fit=crop" alt="Papel RAW">
+        <h3>Papel RAW King Size</h3>
+        <p class="categoria">Papeles</p>
+        <p class="precio">
+          <span class="precio-actual">$10,000</span>
+        </p>
+        <p class="existencias">Existencias: 156 unidades</p>
+        <button class="boton-agregar" onclick="agregarAlCarrito('Papel RAW')">Agregar al carrito</button>
+      </div>
 
-            <div class="product-card">
-                <img src="../img/productos/bong-grav.jpeg" alt="Bong GRAV Labs" class="product-image">
-                <p class="product-category">PIPAS/VIDRIO</p>
-                <h3 class="product-name">Bong Helix de Vidrio GRAV Labs</h3>
-                <p class="product-price">**$350,000**</p>
-                <div class="product-quantity">
-                    <button>-</button>
-                    <input type="number" value="1" min="1">
-                    <button>+</button>
-                </div>
-                <button class="add-to-cart-btn">AÑADIR AL CARRITO</button>
-            </div>
+      <!-- Producto 6 - Grinder -->
+      <div class="tarjeta-producto">
+        <div class="etiqueta-oferta">OFERTA</div>
+        <img src="https://images.unsplash.com/photo-1616627547584-bf28cee262db?w=300&h=300&fit=crop" alt="Grinder Krush">
+        <h3>Moledor KRUSH KUBE</h3>
+        <p class="categoria">Accesorios</p>
+        <p class="precio">
+          <span class="precio-anterior">$150,000</span>
+          <span class="precio-actual">$120,000</span>
+        </p>
+        <p class="existencias">Existencias: 12 unidades</p>
+        <button class="boton-agregar" onclick="agregarAlCarrito('Moledor KRUSH')">Agregar al carrito</button>
+      </div>
 
-            <div class="product-card">
-                <img src="../img/productos/esencia-nasty.jpeg" alt="Esencia Nasty Juice" class="product-image">
-                <p class="product-category">E-LIQUIDS/ESENCIAS</p>
-                <h3 class="product-name">Esencia Nasty Juice 60ml (Mango)</h3>
-                <p class="product-price">**$85,000**</p>
-                <div class="product-quantity">
-                    <button>-</button>
-                    <input type="number" value="1" min="1">
-                    <button>+</button>
-                </div>
-                <button class="add-to-cart-btn">AÑADIR AL CARRITO</button>
-            </div>
-            
-        </div>
+      <!-- Producto 7 - Bong -->
+      <div class="tarjeta-producto">
+        <img src="https://images.unsplash.com/photo-1509822929063-6b6cfc9b42f2?w=300&h=300&fit=crop" alt="Bong GRAV Labs">
+        <h3>Bong GRAV Labs</h3>
+        <p class="categoria">Pipas de Vidrio</p>
+        <p class="precio">
+          <span class="precio-actual">$350,000</span>
+        </p>
+        <p class="existencias">Existencias: 8 unidades</p>
+        <button class="boton-agregar" onclick="agregarAlCarrito('Bong GRAV Labs')">Agregar al carrito</button>
+      </div>
+
+      <!-- Producto 8 - Esencia -->
+      <div class="tarjeta-producto">
+        <div class="etiqueta-oferta">OFERTA</div>
+        <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=300&h=300&fit=crop" alt="Esencia Nasty Juice">
+        <h3>Esencia Nasty Juice Mango</h3>
+        <p class="categoria">Esencias</p>
+        <p class="precio">
+          <span class="precio-anterior">$110,000</span>
+          <span class="precio-actual">$75,000</span>
+        </p>
+        <p class="existencias">Existencias: 34 unidades</p>
+        <button class="boton-agregar" onclick="agregarAlCarrito('Esencia Nasty Juice')">Agregar al carrito</button>
+      </div>
+
     </div>
-    
-    <div id="marcas" class="tab-content">
-        <h2 class="section-title">EXPLORA NUESTRO CATÁLOGO DE MARCAS</h2>
-        
-        <div class="category-list">
-            
-            <div class="category-group">
-                <h3>Tabacos, Papeles y Cigarrillos Armados</h3>
-                <p>RAW, OCB, Smoking, Zig-Zag, Elements</p>
-            </div>
-            
-            <div class="category-group">
-                <h3>Dispositivos y Marcas Reconocidas</h3>
-                <p>Vaporesso, Voopoo (Drag, Vinci), GeekVape (Aegis), JUUL, Elf Bar / Lost Mary</p>
-            </div>
-            
-            <div class="category-group">
-                <h3>Marcas de Esencias (e-liquids)</h3>
-                <p>Halo, Nasty Juice, Dinner Lady, VGOD, The Milkman</p>
-            </div>
-            
-            <div class="category-group">
-                <h3>Encendedores y Mecheros</h3>
-                <p>Clipper, Zippo, Bic</p>
-            </div>
-            
-            <div class="category-group">
-                <h3>Moledores (Grinders) y Accesorios</h3>
-                <p>Krush, Santa Cruz Shredder, Space Case</p>
-            </div>
-            
-            <div class="category-group">
-                <h3>Bongs, Pipas y Accesorios de Vidrio</h3>
-                <p>GRAV Labs, Marley Natural, Red Eye Glass</p>
-            </div>
+  </main>
 
-        </div>
-    </div>
-    
-    <div id="ofertas" class="tab-content">
-        <h2 class="section-title">OFERTAS Y NOVEDADES EXCLUSIVAS</h2>
-        <p style="color: #00e0d1; margin-top: 20px; font-weight: bold;">¡Aprovecha los mejores precios por tiempo limitado!</p>
-        
-        <div class="product-grid">
-            
-            <div class="product-card">
-                <img src="../img/productos/encendedor-clipper.jpeg" alt="Encendedor Clipper" class="product-image">
-                <p class="product-category">OFERTA FLASH</p>
-                <h3 class="product-name">PACK 3 UNIDADES CLIPPERS</h3>
-                <p class="product-price"><span class="old-price">$25,000</span> **$19,900**</p>
-                <div class="product-quantity">
-                    <button>-</button>
-                    <input type="number" value="1" min="1">
-                    <button>+</button>
-                </div>
-                <button class="add-to-cart-btn">AÑADIR AL CARRITO</button>
-                <span class="product-offer" style="background: red;">-20%</span>
-            </div>
+  <footer class="pie-pagina">
+    <p>&copy; 2025 SmokeSoft - Todos los derechos reservados</p>
+  </footer>
 
-            <div class="product-card">
-                <img src="../img/productos/vaper-desechable.jpeg" alt="Vaporizador Desechable" class="product-image">
-                <p class="product-category">NOVEDAD</p>
-                <h3 class="product-name">Vaporizador Desechable (Sabor Frutas)</h3>
-                <p class="product-price">**$40,000**</p>
-                <div class="product-quantity">
-                    <button>-</button>
-                    <input type="number" value="1" min="1">
-                    <button>+</button>
-                </div>
-                <button class="add-to-cart-btn">AÑADIR AL CARRITO</button>
-                <span class="product-offer">¡Nuevo!</span>
-            </div>
-            
-            <div class="product-card">
-                <img src="../img/productos/esencia-nasty.jpeg" alt="Esencia Nasty Juice" class="product-image">
-                <p class="product-category">LIQUIDACIÓN</p>
-                <h3 class="product-name">Esencia Nasty Juice 60ml (Mango)</h3>
-                <p class="product-price"><span class="old-price">$110,000</span> **$75,000**</p>
-                <div class="product-quantity">
-                    <button>-</button>
-                    <input type="number" value="1" min="1">
-                    <button>+</button>
-                </div>
-                <button class="add-to-cart-btn">AÑADIR AL CARRITO</button>
-                <span class="product-offer" style="background: red;">¡Hot!</span>
-            </div>
-            
-            <div class="product-card">
-                <img src="../img/productos/papel-raw.jpeg" alt="Papel RAW" class="product-image">
-                <p class="product-category">NOVEDAD</p>
-                <h3 class="product-name">Papel de Liar RAW Classic King Size</h3>
-                <p class="product-price">**$10,000**</p>
-                <div class="product-quantity">
-                    <button>-</button>
-                    <input type="number" value="1" min="1">
-                    <button>+</button>
-                </div>
-                <button class="add-to-cart-btn">AÑADIR AL CARRITO</button>
-            </div>
-
-        </div>
-    </div>
-  </div>
-  
   <script>
-    function openTab(evt, tabName) {
-      var i, tabcontent, tablinks;
-      tabcontent = document.getElementsByClassName("tab-content");
-      for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].classList.remove('activo');
-      }
+    // Funcion para buscar productos
+    function buscarProductos() {
+      var textoBusqueda = document.getElementById('campoBusqueda').value.toLowerCase();
+      var productos = document.getElementsByClassName('tarjeta-producto');
       
-      tablinks = document.getElementsByClassName("tab-button");
-      for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].classList.remove('activo');
-      }
-      
-      document.getElementById(tabName).classList.add('activo');
-      evt.currentTarget.classList.add('activo');
-    }
-    
-    document.addEventListener('DOMContentLoaded', function() {
-        const activeTab = document.querySelector('.tab-button.activo');
-        if (activeTab) {
-             activeTab.click(); 
+      for (var i = 0; i < productos.length; i++) {
+        var nombreProducto = productos[i].getElementsByTagName('h3')[0].textContent.toLowerCase();
+        if (nombreProducto.includes(textoBusqueda)) {
+          productos[i].style.display = 'block';
+        } else {
+          productos[i].style.display = 'none';
         }
-    });
+      }
+    }
+
+    // Funcion para agregar al carrito
+    function agregarAlCarrito(nombreProducto) {
+      alert('Agregaste al carrito: ' + nombreProducto);
+    }
   </script>
 </body>
 </html>
