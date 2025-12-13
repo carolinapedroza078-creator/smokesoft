@@ -1,4 +1,4 @@
-﻿/* estilosIndex.css */
+﻿/* Estilos generales de la pagina */
 
 * {
   margin: 0;
@@ -15,6 +15,16 @@ body {
   min-height: 100vh;
 }
 
+/* Encabezado de la pagina */
+.encabezado {
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+}
+
+/* Para compatibilidad con index.html que usa .header */
 .header {
   background: rgba(0, 0, 0, 0.7);
   display: flex;
@@ -23,6 +33,7 @@ body {
   padding: 15px 40px;
 }
 
+/* Logo de la empresa */
 .logo {
   display: flex;
   align-items: center;
@@ -39,18 +50,39 @@ body {
   color: #ffffff;
 }
 
+/* Menu de navegacion */
+.navegacion a {
+  text-decoration: none;
+  color: #fff;
+  margin-left: 25px;
+  font-weight: 500;
+}
+
+.navegacion a:hover {
+  color: #00e0d1;
+}
+
+.navegacion a.activo {
+  color: #00e0d1;
+}
+
+/* Para compatibilidad con index.html que usa .menu */
 .menu a {
   text-decoration: none;
   color: #fff;
   margin-left: 25px;
   font-weight: 500;
-  transition: color 0.3s ease;
 }
 
 .menu a:hover {
   color: #00e0d1;
 }
 
+.menu a.activo {
+  color: #00e0d1;
+}
+
+/* Seccion principal */
 .principal {
   flex: 1;
   display: flex;
@@ -86,7 +118,7 @@ body {
   margin-bottom: 25px;
 }
 
-/* ✅ Botón "Ingresar" */
+/* Boton de ingresar */
 .boton-ingresar {
   display: inline-block;
   padding: 12px 35px;
@@ -96,13 +128,13 @@ body {
   border-radius: 30px;
   text-decoration: none;
   font-weight: bold;
-  transition: background-color 0.3s ease;
 }
 
 .boton-ingresar:hover {
   background-color: #00b5a8;
 }
 
+/* Pie de pagina */
 .footer {
   background: rgba(0, 0, 0, 0.6);
   text-align: center;
