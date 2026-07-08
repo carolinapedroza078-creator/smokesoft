@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="../css/estilosAdmin.css">
 </head>
 <body>
-  <header class="encabezado">
+  <header class="encabezado encabezado-publico">
     <div class="logo">
       <img src="../img/logo-smokesoft.png" alt="Logo SmokeSoft">
       <h1>SmokeSoft</h1>
@@ -25,362 +25,85 @@
   <div id="seccionInicioSesion" class="contenedor-inicio-sesion">
     <div class="caja-inicio-sesion">
       <h2>Iniciar Sesión</h2>
-      <p>Ingresa tus datos para entrar</p>
+      <p>Ingresa tus datos para entrar al panel</p>
 
-      <!-- Aviso para pruebas -->
       <div class="aviso-prueba">
         <strong>Datos de prueba:</strong><br>
         Usuario: admin<br>
         Contraseña: 12345678
       </div>
-      
+
       <form id="formularioInicioSesion">
         <div class="grupo-campo">
           <label for="campoUsuario">Usuario:</label>
           <input type="text" id="campoUsuario" placeholder="Escribe tu usuario" required>
         </div>
-        
+
         <div class="grupo-campo">
           <label for="campoContrasena">Contraseña:</label>
           <input type="password" id="campoContrasena" placeholder="Escribe tu contraseña" required>
         </div>
-        
+
         <p id="textoError" class="texto-error"></p>
-        
+
         <button type="submit" class="boton-entrar">Ingresar</button>
       </form>
     </div>
   </div>
 
   <!-- Panel de Administracion -->
-  <div id="panelAdministracion" class="panel-administracion" style="display: none;">
-    <div class="contenedor-panel">
-      <div class="encabezado-panel">
-        <h2>Panel de Administración</h2>
-        <button onclick="cerrarSesion()" class="boton-salir">Cerrar Sesión</button>
-      </div>
-
-      <!-- Resumen de datos -->
-      <div class="resumen-datos">
-        <div class="caja-dato">
-          <h3>Total Productos</h3>
-          <p id="cantidadProductos">8</p>
+  <div id="panelAdministracion" class="panel-administracion">
+    <div class="layout-admin">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="logo-sidebar">
+          <img src="../img/logo-smokesoft.png" alt="SmokeSoft">
+          <span>SmokeSoft</span>
         </div>
-        <div class="caja-dato">
-          <h3>Total Existencias</h3>
-          <p id="cantidadExistencias">434</p>
-        </div>
-        <div class="caja-dato">
-          <h3>Pedidos</h3>
-          <p id="cantidadPedidos">5</p>
-        </div>
+
+        <nav class="menu-lateral">
+          <button class="item-menu activo" data-modulo="dashboard">
+            <span class="icono-menu">📊</span> Dashboard
+          </button>
+          <button class="item-menu" data-modulo="usuarios">
+            <span class="icono-menu">👤</span> Usuarios
+          </button>
+          <button class="item-menu" data-modulo="clientes">
+            <span class="icono-menu">👥</span> Clientes
+          </button>
+          <button class="item-menu" data-modulo="proveedores">
+            <span class="icono-menu">🏭</span> Proveedores
+          </button>
+          <button class="item-menu" data-modulo="productos">
+            <span class="icono-menu">📦</span> Productos
+          </button>
+          <button class="item-menu item-salir" id="btnCerrarSesion">
+            <span class="icono-menu">🚪</span> Cerrar Sesión
+          </button>
+        </nav>
+      </aside>
+
+      <!-- Area principal -->
+      <div class="area-principal">
+        <header class="encabezado-admin">
+          <button class="btn-menu-hamburguesa" id="btnToggleSidebar" aria-label="Toggle menu">☰</button>
+          <div class="info-usuario">
+            <div class="datos-usuario">
+              <div class="nombre-usuario">Administrador</div>
+              <div class="rol-usuario">admin</div>
+            </div>
+            <div class="avatar-usuario">A</div>
+          </div>
+        </header>
+
+        <main id="contenidoModulo" class="contenido-modulo"></main>
       </div>
-
-      <!-- Tabla de Productos -->
-      <div class="seccion-productos">
-        <h3>Inventario de Productos</h3>
-        <button onclick="mostrarFormularioProducto()" class="boton-nuevo">+ Agregar Producto</button>
-        
-        <table class="tabla-inventario">
-          <thead>
-            <tr>
-              <th>Nombre</th>
-              <th>Categoría</th>
-              <th>Precio</th>
-              <th>Existencias</th>
-              <th>Acciones</th>
-            </tr>
-          </thead>
-          <tbody id="cuerpoTabla">
-            <tr>
-              <td>Encendedor Clipper</td>
-              <td>Encendedores</td>
-              <td>$7,800</td>
-              <td>45</td>
-              <td>
-                <button class="boton-editar" onclick="editarExistencias(this)">Editar</button>
-              </td>
-            </tr>
-            <tr>
-              <td>Pipa Bate Gold</td>
-              <td>Pipas</td>
-              <td>$12,000</td>
-              <td>23</td>
-              <td>
-                <button class="boton-editar" onclick="editarExistencias(this)">Editar</button>
-              </td>
-            </tr>
-            <tr>
-              <td>Pipa Mini Gold</td>
-              <td>Pipas</td>
-              <td>$8,000</td>
-              <td>67</td>
-              <td>
-                <button class="boton-editar" onclick="editarExistencias(this)">Editar</button>
-              </td>
-            </tr>
-            <tr>
-              <td>Vaper Desechable</td>
-              <td>Vaporizadores</td>
-              <td>$40,000</td>
-              <td>89</td>
-              <td>
-                <button class="boton-editar" onclick="editarExistencias(this)">Editar</button>
-              </td>
-            </tr>
-            <tr>
-              <td>Papel RAW King Size</td>
-              <td>Papeles</td>
-              <td>$10,000</td>
-              <td>156</td>
-              <td>
-                <button class="boton-editar" onclick="editarExistencias(this)">Editar</button>
-              </td>
-            </tr>
-            <tr>
-              <td>Moledor KRUSH KUBE</td>
-              <td>Accesorios</td>
-              <td>$120,000</td>
-              <td>12</td>
-              <td>
-                <button class="boton-editar" onclick="editarExistencias(this)">Editar</button>
-              </td>
-            </tr>
-            <tr>
-              <td>Bong GRAV Labs</td>
-              <td>Pipas</td>
-              <td>$350,000</td>
-              <td>8</td>
-              <td>
-                <button class="boton-editar" onclick="editarExistencias(this)">Editar</button>
-              </td>
-            </tr>
-            <tr>
-              <td>Esencia Nasty Juice</td>
-              <td>Esencias</td>
-              <td>$75,000</td>
-              <td>34</td>
-              <td>
-                <button class="boton-editar" onclick="editarExistencias(this)">Editar</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <!-- Lista de Pedidos -->
-      <div class="seccion-pedidos">
-        <h3>Pedidos Recientes</h3>
-        
-        <div class="lista-pedidos">
-          <div class="tarjeta-pedido">
-            <div class="encabezado-pedido">
-              <span class="numero-pedido">#001</span>
-              <span class="estado-pedido pendiente">Pendiente</span>
-            </div>
-            <p><strong>Cliente:</strong> Carlos Mendoza</p>
-            <p><strong>Productos:</strong> Encendedor Clipper x3, Papel RAW x2</p>
-            <p><strong>Total:</strong> $43,400</p>
-            <p><strong>Fecha:</strong> 13/12/2025</p>
-          </div>
-
-          <div class="tarjeta-pedido">
-            <div class="encabezado-pedido">
-              <span class="numero-pedido">#002</span>
-              <span class="estado-pedido procesando">Procesando</span>
-            </div>
-            <p><strong>Cliente:</strong> María García</p>
-            <p><strong>Productos:</strong> Vaper Desechable x1</p>
-            <p><strong>Total:</strong> $40,000</p>
-            <p><strong>Fecha:</strong> 12/12/2025</p>
-          </div>
-
-          <div class="tarjeta-pedido">
-            <div class="encabezado-pedido">
-              <span class="numero-pedido">#003</span>
-              <span class="estado-pedido completado">Completado</span>
-            </div>
-            <p><strong>Cliente:</strong> Juan Pérez</p>
-            <p><strong>Productos:</strong> Bong GRAV Labs x1, Moledor KRUSH x1</p>
-            <p><strong>Total:</strong> $470,000</p>
-            <p><strong>Fecha:</strong> 11/12/2025</p>
-          </div>
-
-          <div class="tarjeta-pedido">
-            <div class="encabezado-pedido">
-              <span class="numero-pedido">#004</span>
-              <span class="estado-pedido pendiente">Pendiente</span>
-            </div>
-            <p><strong>Cliente:</strong> Ana López</p>
-            <p><strong>Productos:</strong> Esencia Nasty Juice x2, Pipa Mini Gold x1</p>
-            <p><strong>Total:</strong> $158,000</p>
-            <p><strong>Fecha:</strong> 13/12/2025</p>
-          </div>
-
-          <div class="tarjeta-pedido">
-            <div class="encabezado-pedido">
-              <span class="numero-pedido">#005</span>
-              <span class="estado-pedido enviado">Enviado</span>
-            </div>
-            <p><strong>Cliente:</strong> Roberto Díaz</p>
-            <p><strong>Productos:</strong> Pipa Bate Gold x2</p>
-            <p><strong>Total:</strong> $24,000</p>
-            <p><strong>Fecha:</strong> 10/12/2025</p>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
 
-  <!-- Ventana para agregar producto -->
-  <div id="ventanaProducto" class="ventana-emergente" style="display: none;">
-    <div class="contenido-ventana">
-      <h3>Agregar Nuevo Producto</h3>
-      <form id="formularioProducto">
-        <div class="grupo-campo">
-          <label>Nombre:</label>
-          <input type="text" id="nombreProducto" required>
-        </div>
-        <div class="grupo-campo">
-          <label>Categoría:</label>
-          <select id="categoriaProducto" required>
-            <option value="">Seleccionar...</option>
-            <option value="Encendedores">Encendedores</option>
-            <option value="Pipas">Pipas</option>
-            <option value="Vaporizadores">Vaporizadores</option>
-            <option value="Papeles">Papeles</option>
-            <option value="Accesorios">Accesorios</option>
-            <option value="Esencias">Esencias</option>
-          </select>
-        </div>
-        <div class="grupo-campo">
-          <label>Precio:</label>
-          <input type="number" id="precioProducto" required>
-        </div>
-        <div class="grupo-campo">
-          <label>Existencias:</label>
-          <input type="number" id="existenciasProducto" required>
-        </div>
-        <div class="botones-ventana">
-          <button type="button" onclick="cerrarFormularioProducto()">Cancelar</button>
-          <button type="submit">Guardar</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <script>
-    // Contraseña del administrador
-    var claveCorrecta = '12345678';
-
-    // Verificar si ya inicio sesion
-    window.onload = function() {
-      var sesionActiva = sessionStorage.getItem('administradorActivo');
-      if (sesionActiva === 'si') {
-        mostrarPanel();
-      }
-    };
-
-    // Cuando se envia el formulario de inicio de sesion
-    document.getElementById('formularioInicioSesion').onsubmit = function(evento) {
-      evento.preventDefault();
-      
-      var contrasenaIngresada = document.getElementById('campoContrasena').value;
-      var textoError = document.getElementById('textoError');
-      
-      if (contrasenaIngresada === claveCorrecta) {
-        sessionStorage.setItem('administradorActivo', 'si');
-        mostrarPanel();
-      } else {
-        textoError.textContent = 'Contraseña incorrecta. Intenta de nuevo.';
-      }
-    };
-
-    // Mostrar el panel de administracion
-    function mostrarPanel() {
-      document.getElementById('seccionInicioSesion').style.display = 'none';
-      document.getElementById('panelAdministracion').style.display = 'block';
-    }
-
-    // Cerrar sesion
-    function cerrarSesion() {
-      sessionStorage.removeItem('administradorActivo');
-      document.getElementById('seccionInicioSesion').style.display = 'flex';
-      document.getElementById('panelAdministracion').style.display = 'none';
-      document.getElementById('campoContrasena').value = '';
-      document.getElementById('textoError').textContent = '';
-    }
-
-    // Editar existencias de un producto
-    function editarExistencias(boton) {
-      var fila = boton.parentElement.parentElement;
-      var celdaExistencias = fila.cells[3];
-      var existenciasActuales = celdaExistencias.textContent;
-      
-      var nuevasExistencias = prompt('Ingresa las nuevas existencias:', existenciasActuales);
-      
-      if (nuevasExistencias !== null && nuevasExistencias !== '') {
-        celdaExistencias.textContent = nuevasExistencias;
-        calcularTotalExistencias();
-        alert('Existencias actualizadas correctamente');
-      }
-    }
-
-    // Calcular el total de existencias
-    function calcularTotalExistencias() {
-      var tabla = document.getElementById('cuerpoTabla');
-      var filas = tabla.getElementsByTagName('tr');
-      var total = 0;
-      
-      for (var i = 0; i < filas.length; i++) {
-        var existencias = parseInt(filas[i].cells[3].textContent);
-        total = total + existencias;
-      }
-      
-      document.getElementById('cantidadExistencias').textContent = total;
-    }
-
-    // Mostrar ventana para agregar producto
-    function mostrarFormularioProducto() {
-      document.getElementById('ventanaProducto').style.display = 'flex';
-    }
-
-    // Cerrar ventana de producto
-    function cerrarFormularioProducto() {
-      document.getElementById('ventanaProducto').style.display = 'none';
-    }
-
-    // Guardar nuevo producto
-    document.getElementById('formularioProducto').onsubmit = function(evento) {
-      evento.preventDefault();
-      
-      var nombre = document.getElementById('nombreProducto').value;
-      var categoria = document.getElementById('categoriaProducto').value;
-      var precio = document.getElementById('precioProducto').value;
-      var existencias = document.getElementById('existenciasProducto').value;
-      
-      // Crear nueva fila en la tabla
-      var tabla = document.getElementById('cuerpoTabla');
-      var nuevaFila = tabla.insertRow();
-      
-      nuevaFila.innerHTML = '<td>' + nombre + '</td>' +
-                            '<td>' + categoria + '</td>' +
-                            '<td>$' + parseInt(precio).toLocaleString() + '</td>' +
-                            '<td>' + existencias + '</td>' +
-                            '<td><button class="boton-editar" onclick="editarExistencias(this)">Editar</button></td>';
-      
-      // Actualizar contadores
-      var totalProductos = document.getElementById('cantidadProductos');
-      totalProductos.textContent = parseInt(totalProductos.textContent) + 1;
-      calcularTotalExistencias();
-      
-      // Limpiar y cerrar formulario
-      document.getElementById('formularioProducto').reset();
-      cerrarFormularioProducto();
-      
-      alert('Producto agregado correctamente');
-    };
-  </script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/mockData.js"></script>
+  <script src="../js/crudFactory.js"></script>
+  <script src="../js/admin.js"></script>
 </body>
 </html>
