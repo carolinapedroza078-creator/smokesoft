@@ -491,6 +491,147 @@ body.modo-admin {
   margin-top: 12px;
 }
 
+/* Dashboard ampliado */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.dashboard-grid .tarjeta-modulo h3 {
+  color: #00e0d1;
+  margin-bottom: 14px;
+  font-size: 1rem;
+}
+
+.celda-productos-cliente {
+  font-size: 0.85rem;
+  color: #aaa !important;
+  max-width: 280px;
+}
+
+.caja-dato p.stat-moneda {
+  font-size: 1.3rem;
+}
+
+/* Modulo de compras */
+.fila-campos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.grupo-campo textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #444;
+  border-radius: 6px;
+  background-color: #333;
+  color: #fff;
+  font-size: 0.95rem;
+  resize: vertical;
+  font-family: inherit;
+}
+
+.grupo-campo textarea:focus {
+  border-color: #00e0d1;
+  outline: none;
+}
+
+.contenedor-tabla-items {
+  overflow-x: auto;
+  margin-bottom: 10px;
+}
+
+.tabla-items {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabla-items th,
+.tabla-items td {
+  padding: 8px;
+  border-bottom: 1px solid #333;
+  font-size: 0.85rem;
+}
+
+.tabla-items th {
+  color: #00e0d1;
+  text-align: left;
+}
+
+.tabla-items select,
+.tabla-items input {
+  width: 100%;
+  padding: 6px 8px;
+  border: 1px solid #444;
+  border-radius: 4px;
+  background-color: #333;
+  color: #fff;
+  font-size: 0.85rem;
+}
+
+.tabla-items .input-cantidad {
+  width: 60px;
+}
+
+.celda-precio,
+.celda-subtotal {
+  color: #ddd;
+  white-space: nowrap;
+}
+
+.boton-agregar-item {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 14px;
+  background-color: rgba(0, 224, 209, 0.15);
+  color: #00e0d1;
+  border: 1px dashed #00e0d1;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.boton-agregar-item:hover {
+  background-color: rgba(0, 224, 209, 0.25);
+}
+
+.resumen-compra {
+  background-color: #333;
+  border-radius: 8px;
+  padding: 14px;
+  margin-bottom: 16px;
+}
+
+.fila-resumen {
+  display: flex;
+  justify-content: space-between;
+  color: #aaa;
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+}
+
+.fila-resumen.total {
+  color: #00e0d1;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid #444;
+  margin-bottom: 0;
+}
+
+.boton-ver {
+  background-color: rgba(51, 153, 255, 0.2);
+  color: #3399ff;
+}
+
+.boton-ver:hover {
+  background-color: #3399ff;
+  color: #fff;
+}
+
 /* Sidebar colapsado en movil */
 .layout-admin.sidebar-cerrado .sidebar {
   margin-left: -250px;
@@ -500,6 +641,14 @@ body.modo-admin {
 /* Responsive */
 @media (max-width: 900px) {
   .layout-modulo {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .fila-campos {
     grid-template-columns: 1fr;
   }
 

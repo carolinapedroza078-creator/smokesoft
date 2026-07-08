@@ -94,14 +94,55 @@ var AdminPanel = (function () {
     });
   }
 
+  function formatCurrency(amount) {
+    return '$' + Number(amount).toLocaleString('es-CO');
+  }
+
   function renderDashboard() {
     var productos = Storage.getAll('productos');
     var clientes = Storage.getAll('clientes');
     var proveedores = Storage.getAll('proveedores');
     var usuarios = Storage.getAll('usuarios');
+    var statsCompras = ComprasModule.getStats();
+    var resumenClientes = ComprasModule.getResumenPorCliente();
+    var comprasRecientes = ComprasModule.getRecientes(5);
     var totalExistencias = productos.reduce(function (sum, p) {
       return sum + (p.existencias || 0);
     }, 0);
+
+    var filasRecientes = comprasRecientes.map(function (compra) {
+      return (
+        '<tr>' +
+          '<td>#' + String(compra.id).padStart(3, '0') + '</td>' +
+          '<td>' + compra.clienteNombre + '</td>' +
+          '<td>' + compra.fecha + '</td>' +
+          '<td>' + formatCurrency(compra.total) + '</td>' +
+        '</tr>'
+      );
+    }).join('');
+
+    if (!filasRecientes) {
+      filasRecientes = '<tr><td colspan="4" class="celda-vacia">Sin compras registradas</td></tr>';
+    }
+
+    var filasPorCliente = resumenClientes.map(function (entry) {
+      var listaProductos = Object.values(entry.productos).map(function (p) {
+        return p.nombre + ' (x' + p.cantidad + ')';
+      }).join(', ');
+
+      return (
+        '<tr>' +
+          '<td>' + entry.clienteNombre + '</td>' +
+          '<td>' + entry.totalCompras + '</td>' +
+          '<td>' + formatCurrency(entry.totalGastado) + '</td>' +
+          '<td class="celda-productos-cliente">' + (listaProductos || '—') + '</td>' +
+        '</tr>'
+      );
+    }).join('');
+
+    if (!filasPorCliente) {
+      filasPorCliente = '<tr><td colspan="4" class="celda-vacia">Aún no hay compras por cliente</td></tr>';
+    }
 
     return (
       '<div class="modulo-dashboard">' +
@@ -110,12 +151,30 @@ var AdminPanel = (function () {
           '<div class="caja-dato"><h3>Productos</h3><p id="statProductos">' + productos.length + '</p></div>' +
           '<div class="caja-dato"><h3>Existencias</h3><p id="statExistencias">' + totalExistencias + '</p></div>' +
           '<div class="caja-dato"><h3>Clientes</h3><p id="statClientes">' + clientes.length + '</p></div>' +
+          '<div class="caja-dato"><h3>Compras</h3><p id="statCompras">' + statsCompras.total + '</p></div>' +
+          '<div class="caja-dato"><h3>Ingresos</h3><p id="statIngresos">' + formatCurrency(statsCompras.ingresos) + '</p></div>' +
           '<div class="caja-dato"><h3>Proveedores</h3><p id="statProveedores">' + proveedores.length + '</p></div>' +
           '<div class="caja-dato"><h3>Usuarios</h3><p id="statUsuarios">' + usuarios.length + '</p></div>' +
         '</div>' +
-        '<div class="tarjeta-modulo tarjeta-bienvenida">' +
-          '<h3>Bienvenido al Panel de Administración</h3>' +
-          '<p>Selecciona un módulo del menú lateral para gestionar clientes, proveedores, usuarios y productos.</p>' +
+        '<div class="dashboard-grid">' +
+          '<div class="tarjeta-modulo">' +
+            '<h3>Compras Recientes</h3>' +
+            '<div class="contenedor-tabla">' +
+              '<table class="tabla-modulo">' +
+                '<thead><tr><th>ID</th><th>Cliente</th><th>Fecha</th><th>Total</th></tr></thead>' +
+                '<tbody>' + filasRecientes + '</tbody>' +
+              '</table>' +
+            '</div>' +
+          '</div>' +
+          '<div class="tarjeta-modulo">' +
+            '<h3>Productos por Cliente</h3>' +
+            '<div class="contenedor-tabla">' +
+              '<table class="tabla-modulo">' +
+                '<thead><tr><th>Cliente</th><th>Compras</th><th>Total</th><th>Productos</th></tr></thead>' +
+                '<tbody>' + filasPorCliente + '</tbody>' +
+              '</table>' +
+            '</div>' +
+          '</div>' +
         '</div>' +
       '</div>'
     );
@@ -138,6 +197,12 @@ var AdminPanel = (function () {
 
     if (nombre === 'dashboard') {
       contenedor.innerHTML = renderDashboard();
+      return;
+    }
+
+    if (nombre === 'compras') {
+      contenedor.innerHTML = ComprasModule.render();
+      ComprasModule.init(contenedor);
       return;
     }
 
@@ -199,6 +264,11 @@ var AdminPanel = (function () {
   function init() {
     inicializarDatosMock();
     crearModulos();
+
+    ComprasModule.onChange = function () {
+      actualizarDashboard();
+    };
+
     bindNavigation();
 
     if (sessionStorage.getItem('administradorActivo') === 'si') {
